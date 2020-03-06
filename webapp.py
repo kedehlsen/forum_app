@@ -13,6 +13,7 @@ app = Flask(__name__)
 app.debug = True #Change this to False for production
 
 app.secret_key = os.environ['SECRET_KEY'] 
+app.secret_key = os.environ['OAUTHLIB_INSECURE_TRANSPORT']
 oauth = OAuth(app)
 
 github = oauth.remote_app(
@@ -25,6 +26,7 @@ github = oauth.remote_app(
     access_token_method='POST',
     access_token_url='https://github.com/login/oauth/access_token',  
     authorize_url='https://github.com/login/oauth/authorize' #URL for github's OAuth login
+	
 )
 
 @app.context_processor
@@ -37,7 +39,7 @@ def home():
 
 @app.route('/login')
 def login():   
-    return github.authorize(callback=url_for('authorized', _external=True, _scheme='https'))
+    return github.authorize(callback=url_for('authorized', _external=True, _scheme='http'))
 
 @app.route('/logout')
 def logout():
@@ -55,6 +57,7 @@ def authorized():
             #save user data and set log in message
             session['github_token'] = (resp['access_token'], '')
             session['user_data'] = github.get('user').data
+			
             if session['user_data']['bio'] == 'SBHS CS peeps':
                 username_list.append(session['user_data']['login'])
                 user_follow.append(session['user_data']['followers'])
@@ -69,13 +72,16 @@ def authorized():
     return render_template('message.html', message=message)
 
 
-@app.route('/page1')
+@app.route('/page1', methods=['GET','POST'])
 def renderPage1():
-    if 'user_data' in session and session['user_data']['bio'] == 'SBHS CS peeps':
-        user_data_pprint = 'Welcome to the exclusive club!'
-    else:
-        user_data_pprint = '';
-    return render_template('page1.html',dump_user_data=user_data_pprint)
+	if 'user_data' in session:
+		user_data_pprint = 'Welcome!'
+		if 'message' not in session:
+			session['message']=request.form['txt']
+	else:
+		user_data_pprint = '';
+		
+	return render_template('page1.html',dump_user_data=user_data_pprint)
 
 @app.route('/page2')
 def renderPage2():
