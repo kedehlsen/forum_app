@@ -90,8 +90,13 @@ def renderPage1():
 				messages = db.messages
 				post_id = messages.insert_one(post).inserted_id
 				post_id
+		messages = db.messages
+		user_post=''
+		for post in messages.find():
+			user_post += post['User'] + '\t' + post['Message'] + '\n'
+		print("")
 		
-	return render_template('page1.html',dump_user_data='Welcome')
+	return render_template('page1.html',dump_user_data=user_post)
 
 @app.route('/page2')
 def renderPage2():
