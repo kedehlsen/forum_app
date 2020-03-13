@@ -3,9 +3,6 @@
 {% block title %}page1{% endblock %}
 
 {% block content %}
-  <h1>This is Page 1</h1>
-
-<p>Hello!</p>
 
 <form action="/page1" method='POST'>
   <label for="txt">Message:</label><br>
@@ -13,9 +10,19 @@
   <input type="submit" value="Post">
 </form> 
 
-
-<pre>
+<p>
 {{ dump_user_data }}
-</pre>
+</p>
+
+<button class="btn">Edit Posts</button>
+<div class="dropdown">
+  <button class="btn" style="border-left:1px solid #0d8bf2" >
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-content">
+    <a href="google.com">Edit</a>
+    <a href="#">Delete</a>
+  </div>
+</div>
 
 {% endblock %}

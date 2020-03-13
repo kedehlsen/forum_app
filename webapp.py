@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, session, request, jsonify
+from flask import Flask, redirect, url_for, session, request, jsonify, Markup
 from flask_oauthlib.client import OAuth
 from flask import render_template
 
@@ -84,6 +84,7 @@ def renderPage1():
 	collection = db['messages']
 	
 	if 'user_data' in session:
+		
 		if 'txt' in request.form:
 				message=request.form['txt']
 				post = {'User':session['user_data']['login'], 'Message':message}
@@ -93,7 +94,7 @@ def renderPage1():
 		messages = db.messages
 		user_post=''
 		for post in messages.find():
-			user_post += post['User'] + '\t' + post['Message'] + '\n'
+			user_post += Markup('<br>') + post['User'] + ':' + '\n' + post['Message'] + Markup('<br>')
 		print("")
 		
 	return render_template('page1.html',dump_user_data=user_post)
