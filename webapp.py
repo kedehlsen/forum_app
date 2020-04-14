@@ -14,6 +14,7 @@ app = Flask(__name__)
 
 app.debug = True #Change this to False for production
 
+os.environ['OAUTHLIB_INSECURE_TRANSPORT']='1'
 app.secret_key = os.environ['SECRET_KEY'] 
 app.secret_key = os.environ['OAUTHLIB_INSECURE_TRANSPORT']
 oauth = OAuth(app)
