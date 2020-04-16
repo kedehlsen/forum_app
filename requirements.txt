@@ -4,5 +4,7 @@ MarkupSafe
 Werkzeug==0.16.1
 wheel
 gunicorn
+bson
 Flask-OAuthlib
+Flask-pymongo
 dnspython
