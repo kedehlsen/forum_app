@@ -1,3 +1,7 @@
+body{
+	background-color: rgb(20,50,200);
+}
+
 .btn {
   background-color: #2196F3;
   color: white;
@@ -25,17 +29,16 @@
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  background-color: #ddd
 }
-
-.dropdown-content a:hover {background-color: #ddd}
 
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-.navbar-item {
+/*.navbar-item {
 	text-align:right;
-}
+}*/
 
 #content {
      margin-left: 20px;
