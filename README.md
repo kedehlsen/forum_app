@@ -9,3 +9,11 @@ export GITHUB_CLIENT_ID=e1ee33b378aedd2c0631
 export GITHUB_CLIENT_SECRET=39956a706bfefe217ccae12b674cd9b980383ca8
 
 export OAUTHLIB_INSECURE_TRANSPORT='1'
+
+
+edit/delete buttons
+make 2 python routes & html pages-- one for each (/page1/edit)
+edit -- radio buttons
+	edit what you wnat to happen, then send user back to pg1
+delete -- checkboxes
+	delete ur choice then send user back to pg1
