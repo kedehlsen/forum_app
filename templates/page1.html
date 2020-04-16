@@ -20,9 +20,13 @@
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-content">
-    <a href="google.com">Edit</a>
-    <a href="#">Delete</a>
+    <a href="/edit">Edit</a>
+    <a href="/delete">Delete</a>
   </div>
 </div>
+
+<form action="/delete" method="post"> 
+<button type="submit" name="delete" value="docid">Delete</button>
+</form>
 
 {% endblock %}
