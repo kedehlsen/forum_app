@@ -12,7 +12,7 @@ user_follow=[]
 
 app = Flask(__name__)
 
-app.debug = True #Change this to False for production
+app.debug = False #Change this to False for production
 
 app.secret_key = os.environ['SECRET_KEY'] 
 app.secret_key = os.environ['OAUTHLIB_INSECURE_TRANSPORT']
