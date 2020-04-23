@@ -43,7 +43,7 @@
 			<a class="nav-link" href="/page1">Page 1</a>
 		</li>
       {% if logged_in %}
-        <li><p class="navbar-item">{{ session['user_data']['name']}}</li>
+        <!-- <li><p class="navbar-item">{{ session['user_data']['name']}}</li> -->
         <li><p class="navbar-item">Github userID: {{ session['user_data']['login']}}</li>
 	{% endif %}
         <li>
