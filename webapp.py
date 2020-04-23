@@ -93,7 +93,7 @@ def renderPage1():
 		messages = db.messages
 		user_post=''
 		for post in messages.find():
-			user_post += Markup('<br>') + post['User'] + ':' + '\n' + post['Message'] + Markup('<br>')
+			user_post = Markup('<br>') + post['User'] + ':' + '\n' + post['Message'] + Markup('<br>') + user_post
 		print("")
 		
 	return render_template('page1.html',dump_user_data=user_post)
