@@ -15,7 +15,6 @@ app = Flask(__name__)
 app.debug = False #Change this to False for production
 
 app.secret_key = os.environ['SECRET_KEY'] 
-app.secret_key = os.environ['OAUTHLIB_INSECURE_TRANSPORT']
 oauth = OAuth(app)
 
 github = oauth.remote_app(
